@@ -2,6 +2,7 @@ package com.example.AtmWeb.service;
 
 import com.example.AtmWeb.entity.User;
 import com.example.AtmWeb.repository.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +26,8 @@ public class UserService {
                 .orElse(null));
     }
 
-    public ResponseEntity<BigDecimal> getBalance(Long id) {
-        return userRepository.findById(id).map(user -> ResponseEntity.ok(user.getBalance()))
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<String> getBalance(Long id) {
+        return userRepository.findById(id).map(user -> ResponseEntity.ok(user.getBalance().toString()))
+                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
-
-
 }

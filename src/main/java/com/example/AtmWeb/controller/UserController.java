@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @GetMapping("/saldo/{id}")
-    public ResponseEntity<BigDecimal> getBalanceUsers(@PathVariable Long id) {
+    public ResponseEntity<String> getBalanceUsers(@PathVariable Long id) {
         return userService.getBalance(id);
     }
 
