@@ -26,8 +26,8 @@ public class UserService {
                 .orElse(null));
     }
 
-    public ResponseEntity<String> getBalance(Long id) {
-        return userRepository.findById(id).map(user -> ResponseEntity.ok(user.getBalance().toString()))
+    public ResponseEntity<BigDecimal> getBalance(Long id) {
+        return userRepository.findById(id).map(user -> ResponseEntity.ok(user.getBalance()))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 }
