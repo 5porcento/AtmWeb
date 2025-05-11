@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Simulador de Caixa Eletrônico</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1>💳 Caixa Eletrônico</h1>
+
+<p th:text="${msg}" style="color: green;"></p>
+
+<h2>Usuários e Saldos</h2>
+<table>
+  <tr>
+    <th>ID</th><th>Usuário</th><th>Email</th><th>Saldo</th>
+  </tr>
+  <tr th:each="u : ${users}">
+    <td th:text="${u.id}"></td>
+    <td th:text="${u.username}"></td>
+    <td th:text="${u.email}"></td>
+    <td>R$ <span th:text="${u.balance}"></span></td>
+  </tr>
+</table>
+</body>
+</html>
