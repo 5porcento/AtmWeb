@@ -33,4 +33,14 @@ public class UserController {
         return userService.getBalance(id);
     }
 
+    @PostMapping("/depositar/{id}")
+    public ResponseEntity<BigDecimal> depositUser(@PathVariable Long id, @RequestBody BigDecimal amount) {
+        return userService.deposit(id,amount);
+    }
+
+    @PostMapping("/sacar/{id}")
+    public ResponseEntity<BigDecimal> sacarUser(@PathVariable Long id, @RequestBody BigDecimal amount) {
+        return userService.withdraw(id,amount);
+    }
+
 }

@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -30,4 +31,21 @@ public class UserService {
         return userRepository.findById(id).map(user -> ResponseEntity.ok(user.getBalance()))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
+
+    public ResponseEntity<BigDecimal> deposit(Long id, BigDecimal amount) {
+        return userRepository.findById(id).map(user ->{
+            user.setBalance(user.getBalance().add(amount));
+            userRepository.save(user);
+            return ResponseEntity.ok(user.getBalance());
+        }).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+
+    public ResponseEntity<BigDecimal> withdraw(Long id, BigDecimal amount) {
+        return userRepository.findById(id).map(user -> {
+            user.setBalance(user.getBalance().subtract(amount));
+            userRepository.save(user);
+            return ResponseEntity.ok(user.getBalance());
+        }).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+
 }
