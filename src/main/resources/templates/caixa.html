@@ -2,34 +2,134 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Caixa Eletrônico</title>
-  <link rel="stylesheet" th:href="@{/styles.css}">
+  <title>Caixa Eletrônico CDA-BANK</title>
+  <style>
+    body {
+      background-color: #5b879a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .atm-frame {
+      background-color: #1d3c34;
+      padding: 20px;
+      border-radius: 10px;
+      width: 800px;
+      height: 500px;
+      box-shadow: 0 0 20px #000;
+    }
+
+    .atm-screen {
+      background-color: #5b879a;
+      border-radius: 10px;
+      padding: 20px;
+      height: 100%;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .atm-header {
+      text-align: center;
+      font-size: 28px; /* Aumentado */
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      background-color: #1d3c34;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .atm-header img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .atm-instructions {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 20px; /* Aumentado */
+    }
+
+    .atm-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .button-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 100%;
+    }
+
+    .atm-button {
+      background-color: white;
+      color: #1d3c34;
+      border: 3px solid #e1b90f;
+      border-radius: 10px;
+      padding: 22px 40px; /* Aumentado */
+      font-size: 20px; /* Aumentado */
+      font-weight: bold;
+      cursor: pointer;
+      margin: 15px 0;
+      width: 200px;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .atm-button:hover {
+      background-color: #f4f4f4;
+    }
+  </style>
 </head>
 <body>
 <div class="atm-frame">
   <div class="atm-screen">
-    <h2>CAIXA ELETRÔNICO CDA-BANK 24 Hrs </h2>
-    <p>Por favor, Precione o Botão da Opção Desejada:</p>
+    <div class="atm-header">
+      <img src="https://cdn-icons-png.flaticon.com/512/857/857681.png" alt="Ícone Banco">
+      CAIXA ELETRÔNICO CDA-BANK 24 Hrs
+    </div>
+
+    <div class="atm-instructions">
+      Por favor, pressione o botão ao lado da opção desejada:
+    </div>
+
     <div class="atm-buttons">
-      <form th:action="@{/depositar}" method="post">
-        <input type="hidden" name="id" value="1" /> <!-- Exemplo -->
-        <input type="hidden" name="amount" value="100" />
-        <button type="submit" class="atm-button">Depósito</button>
-      </form>
+      <!-- Coluna esquerda -->
+      <div class="button-column">
+        <form th:action="@{/depositar}" method="post">
+          <input type="hidden" name="id" value="1" />
+          <input type="hidden" name="amount" value="100" />
+          <button type="submit" class="atm-button">Depósito</button>
+        </form>
 
-      <form th:action="@{/sacar}" method="post">
-        <input type="hidden" name="id" value="1" /> <!-- Exemplo -->
-        <input type="hidden" name="amount" value="50" />
-        <button type="submit" class="atm-button">Saque</button>
-      </form>
+        <form th:action="@{/saldo/1}" method="get">
+          <button type="submit" class="atm-button">Saldo</button>
+        </form>
+      </div>
 
-      <form th:action="@{/saldo/1}" method="get">
-        <button type="submit" class="atm-button">Saldo</button>
-      </form>
+      <!-- Coluna direita -->
+      <div class="button-column">
+        <form th:action="@{/sacar}" method="post">
+          <input type="hidden" name="id" value="1" />
+          <input type="hidden" name="amount" value="50" />
+          <button type="submit" class="atm-button">Saque</button>
+        </form>
 
-      <form th:action="@{/usuarios}" method="get">
-        <button type="submit" class="atm-button">Ver Usuários</button>
-      </form>
+        <form th:action="@{/usuarios}" method="get">
+          <button type="submit" class="atm-button">Ver Usuários</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
