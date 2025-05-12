@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Simulador de Caixa Eletrônico</title>
   <meta charset="UTF-8">
+  <title>Caixa Eletrônico</title>
+  <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
-<h1>💳 Caixa Eletrônico</h1>
+<div class="atm-frame">
+  <div class="atm-screen">
+    <h2>CAIXA ELETRÔNICO CDA-BANK 24 Hrs </h2>
+    <p>Por favor, Precione o Botão da Opção Desejada:</p>
+    <div class="atm-buttons">
+      <form th:action="@{/depositar}" method="post">
+        <input type="hidden" name="id" value="1" /> <!-- Exemplo -->
+        <input type="hidden" name="amount" value="100" />
+        <button type="submit" class="atm-button">Depósito</button>
+      </form>
 
-<p th:text="${msg}" style="color: green;"></p>
+      <form th:action="@{/sacar}" method="post">
+        <input type="hidden" name="id" value="1" /> <!-- Exemplo -->
+        <input type="hidden" name="amount" value="50" />
+        <button type="submit" class="atm-button">Saque</button>
+      </form>
 
-<h2>Usuários e Saldos</h2>
-<table>
-  <tr>
-    <th>ID</th><th>Usuário</th><th>Email</th><th>Saldo</th>
-  </tr>
-  <tr th:each="u : ${users}">
-    <td th:text="${u.id}"></td>
-    <td th:text="${u.username}"></td>
-    <td th:text="${u.email}"></td>
-    <td>R$ <span th:text="${u.balance}"></span></td>
-  </tr>
-</table>
+      <form th:action="@{/saldo/1}" method="get">
+        <button type="submit" class="atm-button">Saldo</button>
+      </form>
+
+      <form th:action="@{/usuarios}" method="get">
+        <button type="submit" class="atm-button">Ver Usuários</button>
+      </form>
+    </div>
+  </div>
+</div>
 </body>
 </html>

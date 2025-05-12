@@ -1,0 +1,51 @@
+body {
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.atm-frame {
+    background-color: #333;
+    width: 700px;
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    padding: 20px;
+    position: relative;
+}
+
+.atm-screen {
+    background-color: #007BFF;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.atm-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.atm-button {
+    background-color: white;
+    color: #007BFF;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.atm-button:hover {
+    background-color: #e0e0e0;
+}
