@@ -5,7 +5,7 @@
   <title>Caixa Eletrônico CDA-BANK</title>
   <style>
     body {
-      background-color: #5b879a;
+      background-color: #5b879a; /* Azul acinzentado da bandeira */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -15,7 +15,7 @@
     }
 
     .atm-frame {
-      background-color: #1d3c34;
+      background-color: #1d3c34; /* Verde escuro */
       padding: 20px;
       border-radius: 10px;
       width: 800px;
@@ -36,26 +36,26 @@
 
     .atm-header {
       text-align: center;
-      font-size: 28px; /* Aumentado */
+      font-size: 22px;
       font-weight: bold;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
       background-color: #1d3c34;
       padding: 10px;
       border-radius: 8px;
     }
 
     .atm-header img {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
     }
 
     .atm-instructions {
       text-align: center;
       margin-bottom: 10px;
-      font-size: 20px; /* Aumentado */
+      font-size: 16px;
     }
 
     .atm-buttons {
@@ -75,14 +75,14 @@
     .atm-button {
       background-color: white;
       color: #1d3c34;
-      border: 3px solid #e1b90f;
-      border-radius: 10px;
-      padding: 22px 40px; /* Aumentado */
-      font-size: 20px; /* Aumentado */
+      border: 2px solid #e1b90f;
+      border-radius: 8px;
+      padding: 15px 30px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      margin: 15px 0;
-      width: 200px;
+      margin: 10px 0;
+      width: 180px; /* Aumentado para caber os textos maiores */
       text-align: center;
       transition: background-color 0.3s;
     }
@@ -96,7 +96,7 @@
 <div class="atm-frame">
   <div class="atm-screen">
     <div class="atm-header">
-      <img src="https://cdn-icons-png.flaticon.com/512/857/857681.png" alt="Ícone Banco">
+      <img src="https://cdn-icons-png.flaticon.com/512/3416/3416021.png" alt="Banco" />
       CAIXA ELETRÔNICO CDA-BANK 24 Hrs
     </div>
 
@@ -116,6 +116,10 @@
         <form th:action="@{/saldo/1}" method="get">
           <button type="submit" class="atm-button">Saldo</button>
         </form>
+
+        <form th:action="@{/extrato/1}" method="get">
+          <button type="submit" class="atm-button">Extrato</button>
+        </form>
       </div>
 
       <!-- Coluna direita -->
@@ -128,6 +132,10 @@
 
         <form th:action="@{/usuarios}" method="get">
           <button type="submit" class="atm-button">Ver Usuários</button>
+        </form>
+
+        <form th:action="@{/logout}" method="post">
+          <button type="submit" class="atm-button">Encerrar Sessão</button>
         </form>
       </div>
     </div>
